@@ -57,4 +57,19 @@ void onStart(ServiceInstance service) {
   //   print(data);
   //   // showNotification(data, 0);
   // });
+  socketInit();
+}
+socketInit() {
+  globals.socket = io('http://192.168.1.2:3000',
+      OptionBuilder()
+          .setTransports(['websocket']) // for Flutter or Dart VM
+      // .setExtraHeaders({'foo': 'bar'}) // optional
+          .build());
+  globals.socket.onConnect((data) {
+    print('connect');
+  });
+  globals.socket.on('chat message', (data) {
+    print(data);
+    showNotification(data, 0);
+  });
 }

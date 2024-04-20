@@ -29,19 +29,9 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    socketInit();
+    // socketInit();
   }
-  socketInit() {
-    Socket socket = io('http://192.168.1.2:3000',
-        OptionBuilder()
-            .setTransports(['websocket']) // for Flutter or Dart VM
-            // .setExtraHeaders({'foo': 'bar'}) // optional
-            .build());
-    socket.onConnect((data) {
-      print('connect');
-    });
-    socket.on('chat message', (data) => print(data));
-  }
+
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
